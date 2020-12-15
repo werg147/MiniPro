@@ -53,6 +53,10 @@ public class PhoneApp {
 			int num = sc.nextInt();
 			sc.nextLine();
 			
+			//리스트의 내용 파일에 다시쓰기(처음부터)
+			//파일 쓰기
+			Writer fw = new FileWriter("C:\\javastudy\\미니프로젝트\\PhoneDB.txt");
+			BufferedWriter bw = new BufferedWriter(fw);
 			
 			switch (num) {
 				case 1:
@@ -76,19 +80,14 @@ public class PhoneApp {
 					Person person = new Person(name, hp, company);
 					pList.add(person);
 					
-					//리스트의 내용 파일에 다시쓰기(처음부터)
-					//파일 쓰기
-					Writer fw = new FileWriter("C:\\javastudy\\미니프로젝트\\PhoneDB.txt");
-					BufferedWriter bw = new BufferedWriter(fw);
+					System.out.println("[등록되었습니다.]");
 					
 					for(Person p : pList) {
 						String pStr = p.getName() + "," + p.getHp() + "," + p.getCompany();
 						bw.write(pStr);
 						bw.newLine();
 					}
-					bw.close();
-					
-					System.out.println("[등록되었습니다.]");
+				
 					break; 
 	
 				case 3:
@@ -99,7 +98,15 @@ public class PhoneApp {
 					pList.remove(no-1); //pList 0,1,2...
 					
 					System.out.println("[삭제되었습니다.]");
+					
+					for(Person p : pList) {
+						String pStr = p.getName() + "," + p.getHp() + "," + p.getCompany();
+						bw.write(pStr);
+						bw.newLine();
+					}
+					
 					break;
+					
 	
 				case 4:
 					System.out.println("<4.검색>"); //indexOf (입력받은 문자가 있으면 해당문자의 위치값을 리턴, 없으면 -1을 리턴한다.
@@ -123,6 +130,13 @@ public class PhoneApp {
 					System.out.println("********************************************");
 					System.out.println("*                감사합니다                *");
 					System.out.println("********************************************");
+					
+					for(Person p : pList) {
+						String pStr = p.getName() + "," + p.getHp() + "," + p.getCompany();
+						bw.write(pStr);
+						bw.newLine();
+					}
+					
 					Exit = false;  // 탈출문필요
 					break; 
 	
@@ -130,7 +144,7 @@ public class PhoneApp {
 					System.out.println("[다시 선택해 주세요.]");
 				}
 			
-			
+			bw.close();
 			
 		}
 			
