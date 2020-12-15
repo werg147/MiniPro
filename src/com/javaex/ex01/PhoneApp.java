@@ -87,13 +87,14 @@ public class PhoneApp {
 					break;
 	
 				case 4:
-					System.out.println("<4.검색>");
+					System.out.println("<4.검색>"); //indexOf (입력받은 문자가 있으면 해당문자의 위치값을 리턴, 없으면 -1을 리턴한다.
 					
 					System.out.print(">이름: ");
-					String keyW = sc.nextLine();
+					String key = sc.nextLine();
 					
 					for(int i=0; i<pList.size(); i++) {
-						if(keyW==(pList.get(i).getName())) {
+						if(pList.get(i).getName().indexOf(key) != -1) {
+							//System.out.println(pList.get(i).getName().toString());
 							System.out.println((i+1) + ".\t" + pList.get(i).getName() + "\t" + pList.get(i).getHp() + "\t" + pList.get(i).getCompany());
 						}
 					}
@@ -117,7 +118,7 @@ public class PhoneApp {
 			
 			
 		}
-			//sc.close();
+			sc.close();
 
 	}
 
