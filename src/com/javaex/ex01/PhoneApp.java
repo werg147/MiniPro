@@ -48,6 +48,7 @@ public class PhoneApp {
 			System.out.println("--------------------------------------------");
 			System.out.print(">메뉴번호: ");
 			int num = sc.nextInt();
+			sc.nextLine();
 			
 			
 			switch (num) {
@@ -59,12 +60,11 @@ public class PhoneApp {
 					}
 					break;
 	
-				case 2: //추가등록한 이름이 보이지않음 ?
+				case 2:
 					System.out.println("<2.등록>");
 					
 					System.out.print(">이름: ");
 					String name = sc.nextLine();
-					sc.nextLine();
 					System.out.print(">휴대전화: ");
 					String hp = sc.nextLine();
 					System.out.print(">회사전화: ");
@@ -91,6 +91,12 @@ public class PhoneApp {
 					
 					System.out.print(">이름: ");
 					String keyW = sc.nextLine();
+					
+					for(int i=0; i<pList.size(); i++) {
+						if(keyW==(pList.get(i).getName())) {
+							System.out.println((i+1) + ".\t" + pList.get(i).getName() + "\t" + pList.get(i).getHp() + "\t" + pList.get(i).getCompany());
+						}
+					}
 					
 					//이름 검색 추가
 					
