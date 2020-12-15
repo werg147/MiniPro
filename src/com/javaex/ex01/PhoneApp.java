@@ -1,9 +1,12 @@
 package com.javaex.ex01;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -39,7 +42,7 @@ public class PhoneApp {
 		
 		br.close();
 		
-		//System.out.println(pList.toString()); 데이터 등록 테스트
+		//System.out.println(pList.toString()); 데이터add 테스트
 		
 		boolean Exit = true; //탈출문
 		while(Exit) {
@@ -72,6 +75,18 @@ public class PhoneApp {
 					
 					Person person = new Person(name, hp, company);
 					pList.add(person);
+					
+					//리스트의 내용 파일에 다시쓰기(처음부터)
+					//파일 쓰기
+					Writer fw = new FileWriter("C:\\javastudy\\미니프로젝트\\PhoneDB.txt");
+					BufferedWriter bw = new BufferedWriter(fw);
+					
+					for(Person p : pList) {
+						String pStr = p.getName() + "," + p.getHp() + "," + p.getCompany();
+						bw.write(pStr);
+						bw.newLine();
+					}
+					bw.close();
 					
 					System.out.println("[등록되었습니다.]");
 					break; 
@@ -118,6 +133,7 @@ public class PhoneApp {
 			
 			
 		}
+			
 			sc.close();
 
 	}
