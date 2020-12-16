@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class PhoneApp {
 
 	public static void main(String[] args) throws IOException{
+		
 		//스캐너
 		Scanner sc = new Scanner(System.in);
 		
